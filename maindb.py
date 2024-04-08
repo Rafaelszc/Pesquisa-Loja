@@ -33,7 +33,7 @@ def sortData():
     cursor = conexao.cursor()
     conexao.row_factory = sqlite3.Row
 
-    sortingDataPreco = cursor.execute('SELECT * FROM PRODUTOS ORDER BY VALOR ASC, AVALIACAO DESC, SUPER DESC')
+    sortingDataPreco = cursor.execute('SELECT * FROM PRODUTOS ORDER BY VALOR ASC')
 
     for i in [*sortingDataPreco]:
         cursor.executemany("INSERT INTO SORTED_PRODUTOS(NOME, VALOR, AVALIACAO, SUPER, LINK) VALUES(?,?,?,?,?)", [[*i]])
