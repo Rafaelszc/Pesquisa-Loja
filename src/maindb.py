@@ -11,7 +11,7 @@ def insertData(nome, preco, avaliacao, especial, link):
             *Dentro do banco, o valor especial será alocado no campo SUPER
         
     """
-    conexao = sqlite3.connect('PRODUTOS.db')
+    conexao = sqlite3.connect('resources\databases\PRODUTOS.db')
     cursor = conexao.cursor()
 
     cursor.executemany("INSERT INTO PRODUTOS(NOME, VALOR, AVALIACAO, SUPER, LINK) VALUES(?,?,?,?,?)", [[nome, preco, avaliacao, especial, link]])
@@ -29,7 +29,7 @@ def sortData():
     Por fim, retorna todos os valores finalizados da tabela SORTED_PRODUTOS para a tabela PRODUTOS
     """
 
-    conexao = sqlite3.connect('PRODUTOS.db')
+    conexao = sqlite3.connect('resources\databases\PRODUTOS.db')
     cursor = conexao.cursor()
     conexao.row_factory = sqlite3.Row
 
@@ -68,7 +68,7 @@ def sortData():
 
 
 def resetData():
-    conexao = sqlite3.connect('PRODUTOS.db')
+    conexao = sqlite3.connect('resources\databases\PRODUTOS.db')
     cursor = conexao.cursor()
 
     cursor.execute('DELETE FROM PRODUTOS')
